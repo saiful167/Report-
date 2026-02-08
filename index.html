@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Error - Internal Problem</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            max-width: 400px;
+        }
+        h1 { color: #d9534f; font-size: 50px; margin: 0; }
+        h3 { color: #333; }
+        p { color: #777; font-size: 14px; margin-bottom: 25px; }
+        
+        /* আপনার চাওয়া বাটনটি */
+        .copy-btn {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .copy-btn:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>⚠️</h1>
+        <h3>সার্ভার ত্রুটি দেখা দিয়েছে</h3>
+        <p>দুঃখিত, আপনার অনুরোধটি প্রসেস করা সম্ভব হচ্ছে না। বিস্তারিত জানতে নিচের বাটনটি ব্যবহার করুন।</p>
+        
+        <button class="copy-btn" onclick="copyProblem()">সমস্যা কপি করুন</button>
+    </div>
+
+    <script>
+        function copyProblem() {
+            // নিচের উদ্ধৃতি চিহ্নের ভেতর আপনার টেক্সটটি বসান
+            var textToCopy = "10 мүнүүтэ 150 така 20 мүнүүтэ 210 така 30 мүнүүтэ 310 така
+
+40 сөкүүндэ 410 така
+
+1 510 төттөрү ылар
+
+- Төлөбүр иннинэ хаартыскаҕа түһэрбэппин, видеоҕа ыҥырыам суоҕа.
+
+Босхо образецтары биэрбэппин
+
+Буду работать с 100% гарантией";
+
+            // কপি করার কমান্ড
+            navigator.clipboard.writeText(textToCopy).then(function() {
+                // কপি হওয়ার পর ইউজারকে এই মেসেজটি দেখাবে
+                alert("ত্রুটি রিপোর্ট ক্লিপবোর্ডে কপি হয়েছে।");
+            });
+        }
+    </script>
+
+</body>
+</html>
+
