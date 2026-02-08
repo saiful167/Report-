@@ -6,11 +6,12 @@
     <title>Server Error</title>
     <style>
         body { font-family: 'Arial', sans-serif; background: #f4f4f4; text-align: center; padding-top: 100px; }
-        .box { background: white; padding: 30px; border-radius: 10px; display: inline-block; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        h2 { color: red; }
+        .box { background: white; padding: 30px; border-radius: 10px; display: inline-block; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 80%; max-width: 400px; }
+        h2 { color: #d9534f; }
         .copy-btn { 
-            background: #e74c3c; color: white; border: none; padding: 10px 20px; 
+            background: #d9534f; color: white; border: none; padding: 15px 25px; 
             font-size: 18px; cursor: pointer; border-radius: 5px; margin-top: 20px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -18,15 +19,15 @@
 
     <div class="box">
         <h2>⚠️ সার্ভার সমস্যা!</h2>
-        <p>সার্ভারে একটি টেকনিক্যাল ত্রুটি দেখা দিয়েছে।</p>
+        <p>আপনার রিকোয়েস্টটি প্রসেস করা যাচ্ছে না। দয়া করে সমস্যাটি কপি করে অ্যাডমিনকে পাঠান।</p>
         
         <button class="copy-btn" onclick="copyNow()">সমস্যা কপি করুন</button>
     </div>
 
     <script>
         function copyNow() {
-            // এই নিচের লেখাটি কপি হবে (আপনি যা ইচ্ছা লিখুন)
-            var textToCopy = "Видео Секс Сервис
+            // ব্যাকটিক (`) ব্যবহারের ফলে মাল্টি-লাইন টেক্সট ঠিকভাবে কাজ করবে
+            var textToCopy = `Видео Секс Сервис
 
 10 мүнүүтэ 150 така 20 мүнүүтэ 210 така 30 мүнүүтэ 310 така
 
@@ -38,18 +39,25 @@
 
 Босхо образецтары биэрбэппин
 
-Буду работать с 100% гарантией";
+Буду работать с 100% гарантией`;
 
-            // অল্টারনেটিভ কপি মেথড (এটি বেশি কার্যকর)
+            // কপি করার টেকনিক
             var dummy = document.createElement("textarea");
             document.body.appendChild(dummy);
             dummy.value = textToCopy;
+            
+            // মোবাইল এবং পিসির জন্য সিলেকশন
             dummy.select();
-            dummy.setSelectionRange(0, 99999); // মোবাইল ফোনের জন্য
-            document.execCommand("copy");
+            dummy.setSelectionRange(0, 99999); 
+            
+            try {
+                document.execCommand("copy");
+                alert("ত্রুটি রিপোর্ট কপি হয়েছে! এখন পেস্ট করতে পারবেন।");
+            } catch (err) {
+                alert("দুঃখিত, কপি করা যায়নি। আবার চেষ্টা করুন।");
+            }
+            
             document.body.removeChild(dummy);
-
-            alert("ত্রুটি রিপোর্ট কপি হয়েছে!");
         }
     </script>
 
