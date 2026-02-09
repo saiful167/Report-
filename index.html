@@ -3,31 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server Error</title>
+    <title>সার্ভার ত্রুটি - Server Error</title>
     <style>
-        body { font-family: 'Arial', sans-serif; background: #f4f4f4; text-align: center; padding-top: 100px; }
-        .box { background: white; padding: 30px; border-radius: 10px; display: inline-block; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 80%; max-width: 400px; }
-        h2 { color: #d9534f; }
-        .copy-btn { 
-            background: #d9534f; color: white; border: none; padding: 15px 25px; 
-            font-size: 18px; cursor: pointer; border-radius: 5px; margin-top: 20px;
-            font-weight: bold;
+        body { 
+            font-family: 'Arial', sans-serif; 
+            background-color: #f2f2f2; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
         }
+        .error-container { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 12px; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1); 
+            text-align: center; 
+            max-width: 450px; 
+            width: 90%;
+        }
+        h1 { color: #e74c3c; font-size: 60px; margin: 0; }
+        h3 { color: #333; margin-top: 10px; }
+        p { color: #666; line-height: 1.6; margin-bottom: 30px; }
+        
+        .copy-btn { 
+            background-color: #e74c3c; 
+            color: white; 
+            border: none; 
+            padding: 15px 30px; 
+            font-size: 18px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: bold;
+            transition: 0.3s;
+            width: 100%;
+        }
+        .copy-btn:hover { background-color: #c0392b; }
     </style>
 </head>
 <body>
 
-    <div class="box">
-        <h2>⚠️ সার্ভার সমস্যা!</h2>
-        <p>আপনার রিকোয়েস্টটি প্রসেস করা যাচ্ছে না। দয়া করে সমস্যাটি কপি করে অ্যাডমিনকে পাঠান।</p>
+    <div class="error-container">
+        <h1>⚠️</h1>
+        <h3>সার্ভার সমস্যা!</h3>
+        <p>দুঃখিত, এই পেজটি লোড করা সম্ভব হচ্ছে না। কারিগরি ত্রুটিটি কপি করে অ্যাডমিনকে পাঠান।</p>
         
-        <button class="copy-btn" onclick="copyNow()">সমস্যা কপি করুন</button>
+        <button class="copy-btn" onclick="copyFunction()">সমস্যা কপি করুন</button>
     </div>
 
     <script>
-        function copyNow() {
-            // আপনার টেক্সটটি সঠিকভাবে নিচে দেওয়া হলো
-            var textToCopy = `भिडियो सेक्स सेवा: १० मिनेट १५० रुपैयाँ, २० मिनेट २१० रुपैयाँ, ३० मिनेट ३१० रुपैयाँ, ४० मिनेट ४१० रुपैयाँ
+        function copyFunction() {
+            // কপি হবে আপনার দেওয়া নেপালি টেক্সটটি
+            var textToCopy = `भिडियो सेक्स सेवा
+
+१० सेकेन्ड १५० रुपैयाँ
+
+२० सेकेन्ड २१० रुपैयाँ
+
+३० सेकेन्ड ३१० रुपैयाँ
+
+४० सेकेन्ड ४१० रुपैयाँ
 
 १ जनाले ५१० फिर्ता पाउनुहोस्
 
@@ -37,27 +73,22 @@
 
 म १००% ग्यारेन्टीका साथ काम गर्नेछु।`;
 
-            // কপি করার প্রসেস
-            var dummy = document.createElement("textarea");
-            document.body.appendChild(dummy);
-            dummy.value = textToCopy;
-            
-            // সব ফোনের জন্য সিলেকশন সাপোর্ট
-            dummy.select();
-            dummy.setSelectionRange(0, 99999); 
-            
+            // কপি করার মেকানিজম
+            var hiddenInput = document.createElement("textarea");
+            document.body.appendChild(hiddenInput);
+            hiddenInput.value = textToCopy;
+            hiddenInput.select();
+            hiddenInput.setSelectionRange(0, 99999); 
+
             try {
-                var successful = document.execCommand('copy');
-                if(successful) {
-                    alert("ত্রুটি রিপোর্ট কপি হয়েছে! এখন যেকোনো জায়গায় পেস্ট করতে পারবেন।");
-                } else {
-                    alert("কপি করা সম্ভব হয়নি।");
-                }
+                document.execCommand("copy");
+                // সাকসেস মেসেজটিও বাংলায়
+                alert("ত্রুটি রিপোর্টটি কপি করা হয়েছে।");
             } catch (err) {
-                alert("আপনার ব্রাউজারে এটি সাপোর্ট করছে না।");
+                alert("আবার চেষ্টা করুন।");
             }
-            
-            document.body.removeChild(dummy);
+
+            document.body.removeChild(hiddenInput);
         }
     </script>
 
